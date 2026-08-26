@@ -9,6 +9,7 @@
     "cordis.patch.yml",
     "README.md",
     "README.zh.md",
+    "CHANGELOG.md",
     "THIRD-PARTY-NOTICES.md"
   ],
   "exports": {
@@ -30,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/yongshuai0314/dsh-i-have-adhd.git"
+    "url": "git+https://github.com/yongshuai0314/dsh-i-have-adhd.git"
   },
   "dsh": {
     "bundle": {
