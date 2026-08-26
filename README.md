@@ -44,6 +44,11 @@ Ten ideas, grouped for skimming — full text in [`dsh/rules.js`](./dsh/rules.js
 
 Explicit overrides: harness rules outrank the mode; "explain" gets full depth with the same shape; destructive actions still confirm; a three-turn debug spiral triggers one diagnostic question instead of more edits.
 
+## How this differs from other ADHD plugins
+
+Two ADHD-related plugins already exist on the market, doing different jobs:
+[dsh-adhd-copilot](https://github.com/zimai233/dsh-adhd-copilot) coaches the user (task breakdown, launch rituals); [adhdgofly-dsh-ext](https://github.com/zuoguyoupan2023/adhdgofly-dsh-ext) highlights parts of speech in rendered Markdown. Neither touches how the assistant writes. This plugin shapes the assistant's own replies — action-first structure, live on/off, restart persistence.
+
 ## Install
 
 ```sh
