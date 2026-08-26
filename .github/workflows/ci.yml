@@ -1,0 +1,61 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Entries parse as strict ESM
+        run: |
+          node --check dsh/index.js
+          node --check dsh/rules.js
+
+      - name: Manifest declares the dsh bundle layer
+        run: |
+          node -e "
+            const manifest = require('./package.json');
+            if (manifest.dsh?.bundle?.patch !== './cordis.patch.yml') {
+              throw new Error('dsh.bundle.patch must point at ./cordis.patch.yml');
+            }
+            if (manifest.exports?.['.'] !== './dsh/index.js') {
+              throw new Error('root export must be ./dsh/index.js');
+            }
+            console.log('manifest ok:', manifest.name + '@' + manifest.version);
+          "
+
+      - name: Patch inserts exactly one host-only row
+        run: |
+          node -e "
+            const fs = require('fs');
+            const text = fs.readFileSync('cordis.patch.yml', 'utf8');
+            if (!/- insert:/.test(text)) throw new Error('missing insert block');
+            if (!/id:\s*dsh-i-have-adhd/.test(text)) throw new Error('missing plugin row id');
+            if (!/name:\s*dsh-i-have-adhd/.test(text)) throw new Error('missing package name row');
+            console.log('patch ok');
+          "
+
+      - name: Originality, coverage and state-machine smoke test
+        run: node scripts/smoke.mjs
+
+      - name: Third-party notice carries the upstream MIT license
+        run: |
+          node -e "
+            const text = require('fs').readFileSync('THIRD-PARTY-NOTICES.md', 'utf8');
+            if (!text.includes('Copyright (c) 2026 Ayoub Ghriss')) {
+              throw new Error('upstream copyright line missing');
+            }
+            if (!text.includes('https://github.com/ayghri/i-have-adhd')) {
+              throw new Error('upstream project link missing');
+            }
+            console.log('notices ok');
+          "
