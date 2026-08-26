@@ -1,6 +1,6 @@
-# dsh-ihaveadhd bundle layer: mount the output-shaping plugin (dsh/index.js
+# dsh-i-have-adhd bundle layer: mount the output-shaping plugin (dsh/index.js
 # via the package root export). Host-only on purpose: the ruleset rides the
 # system-prompt section service and the switches are plain agent tools.
 - insert:
-    - id: dsh-ihaveadhd
-      name: dsh-ihaveadhd
+    - id: dsh-i-have-adhd
+      name: dsh-i-have-adhd

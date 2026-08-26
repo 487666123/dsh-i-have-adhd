@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Smoke test: exercises dsh-ihaveadhd without the harness.
+// Smoke test: exercises dsh-i-have-adhd without the harness.
 //
 // 1. Originality gate — distinctive sentences from the upstream project
 //    (ayghri/i-have-adhd, MIT) must NOT appear in our ruleset. The concept
@@ -105,21 +105,21 @@ check('registers adhd_on / adhd_off / adhd_status',
 await ctx1.state.tools.get('adhd_on').execute()
 check('adhd_on registers one section', ctx1.state.sections.length === 1)
 const section = ctx1.state.sections[0]
-check('section is named dsh-ihaveadhd at order 50',
-  section.name === 'dsh-ihaveadhd' && section.order === 50)
+check('section is named dsh-i-have-adhd at order 50',
+  section.name === 'dsh-i-have-adhd' && section.order === 50)
 check('section text is the ruleset', section.text === RULES)
-check('flag file written', existsSync(join(home, 'dsh-ihaveadhd', 'always-on')))
+check('flag file written', existsSync(join(home, 'dsh-i-have-adhd', 'always-on')))
 const onResult = await ctx1.state.tools.get('adhd_status').execute()
 check('status reports enabled', onResult.enabled === true && onResult.persisted === true)
 
 // 4c. adhd_off disposes the section and clears the flag
 await ctx1.state.tools.get('adhd_off').execute()
-check('adhd_off disposes the section', ctx1.state.sections.length === 0 && ctx1.state.disposed.includes('dsh-ihaveadhd'))
-check('flag file removed', !existsSync(join(home, 'dsh-ihaveadhd', 'always-on')))
+check('adhd_off disposes the section', ctx1.state.sections.length === 0 && ctx1.state.disposed.includes('dsh-i-have-adhd'))
+check('flag file removed', !existsSync(join(home, 'dsh-i-have-adhd', 'always-on')))
 
 // 4d. a pre-existing flag restores the mode at apply time
-mkdirSync(join(home, 'dsh-ihaveadhd'), { recursive: true })
-writeFileSync(join(home, 'dsh-ihaveadhd', 'always-on'), 'enabled at smoke\n')
+mkdirSync(join(home, 'dsh-i-have-adhd'), { recursive: true })
+writeFileSync(join(home, 'dsh-i-have-adhd', 'always-on'), 'enabled at smoke\n')
 const ctx2 = mockCtx()
 plugin.apply(ctx2)
 check('pre-existing flag restores the section at boot', ctx2.state.sections.length === 1)

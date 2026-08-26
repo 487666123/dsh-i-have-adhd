@@ -1,4 +1,4 @@
-# dsh-ihaveadhd
+# dsh-i-have-adhd
 
 ADHD-friendly output shaping for [DeepSeek Harness (DSH)](https://github.com/search?q=deepseek+harness): one system-prompt section that rewrites how the assistant replies — action first, numbered steps, concrete time estimates, zero preamble or closers — with live on/off switches that persist across restarts.
 
@@ -14,9 +14,9 @@ Inspired by [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd) (MIT). T
 
 ## How it works
 
-- One system-prompt section (`dsh-ihaveadhd`, order 50 — after the persona, before tool guidance) carries the ruleset into every model step while the mode is on.
+- One system-prompt section (`dsh-i-have-adhd`, order 50 — after the persona, before tool guidance) carries the ruleset into every model step while the mode is on.
 - Three zero-argument agent tools control it:
-  - `adhd_on` — enable for this session and persist (flag file under `$DSH_HOME/dsh-ihaveadhd/`)
+  - `adhd_on` — enable for this session and persist (flag file under `$DSH_HOME/dsh-i-have-adhd/`)
   - `adhd_off` — disable and clear the flag
   - `adhd_status` — report state, since when, and whether restart will restore it
 - The persisted flag restores the mode at boot.
@@ -32,7 +32,7 @@ adhd mode off     → back to default style, flag cleared
 ```
 
 You can also ask for status any time, or create/remove the flag file yourself:
-`$DSH_HOME/dsh-ihaveadhd/always-on` (default `~/.dsh/dsh-ihaveadhd/always-on`).
+`$DSH_HOME/dsh-i-have-adhd/always-on` (default `~/.dsh/dsh-i-have-adhd/always-on`).
 
 ## The ruleset
 
@@ -52,7 +52,7 @@ Two ADHD-related plugins already exist on the market, doing different jobs:
 ## Install
 
 ```sh
-dsh plugin --profile <your-profile> add dsh-ihaveadhd
+dsh plugin --profile <your-profile> add dsh-i-have-adhd
 ```
 
 ## License

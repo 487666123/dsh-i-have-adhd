@@ -1,4 +1,4 @@
-# dsh-ihaveadhd
+# dsh-i-have-adhd
 
 [DeepSeek Harness (DSH)](https://github.com/search?q=deepseek+harness) 的 ADHD 友好输出塑形：一个系统提示词区段改变助手的回复方式——行动先行、编号步骤、具体时间估算、零客套——附带可随时开关、重启保持的控制工具。
 
@@ -12,9 +12,9 @@
 
 ## 工作原理
 
-- 一个系统提示词区段（`dsh-ihaveadhd`，order 50——排在 persona 之后、工具指引之前）在模式开启时进入每个模型步。
+- 一个系统提示词区段（`dsh-i-have-adhd`，order 50——排在 persona 之后、工具指引之前）在模式开启时进入每个模型步。
 - 三个零参数 agent 工具控制它：
-  - `adhd_on` —— 本会话开启并持久化（标志文件在 `$DSH_HOME/dsh-ihaveadhd/`）
+  - `adhd_on` —— 本会话开启并持久化（标志文件在 `$DSH_HOME/dsh-i-have-adhd/`）
   - `adhd_off` —— 关闭并清除标志
   - `adhd_status` —— 报告状态、开启时间、重启是否恢复
 - 持久化标志在启动时自动恢复模式。
@@ -30,7 +30,7 @@ adhd mode off     → 恢复默认风格，标志清除
 ```
 
 也可以随时查询状态，或自己增删标志文件：
-`$DSH_HOME/dsh-ihaveadhd/always-on`（默认 `~/.dsh/dsh-ihaveadhd/always-on`）。
+`$DSH_HOME/dsh-i-have-adhd/always-on`（默认 `~/.dsh/dsh-i-have-adhd/always-on`）。
 
 ## 规则集
 
@@ -45,7 +45,7 @@ adhd mode off     → 恢复默认风格，标志清除
 ## 安装
 
 ```sh
-dsh plugin --profile <你的-profile> add dsh-ihaveadhd
+dsh plugin --profile <你的-profile> add dsh-i-have-adhd
 ```
 
 ## 许可证

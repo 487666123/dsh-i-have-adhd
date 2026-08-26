@@ -1,4 +1,4 @@
-// dsh-ihaveadhd — ADHD-friendly output shaping for DeepSeek Harness.
+// dsh-i-have-adhd — ADHD-friendly output shaping for DeepSeek Harness.
 //
 // Registers one system-prompt section (the rewritten ruleset in ./rules.js)
 // plus three zero-argument tools — adhd_on, adhd_off, adhd_status — so the
@@ -16,20 +16,20 @@ import { homedir } from 'node:os'
 import { join } from 'node:path'
 import { RULES } from './rules.js'
 
-export const name = 'dsh-ihaveadhd'
+export const name = 'dsh-i-have-adhd'
 
 // systemPrompt carries the ruleset into every model step; tools registers
 // the on/off/status switches. Both are core, so they are hard dependencies.
 export const inject = ['systemPrompt', 'tools']
 
-const SECTION_NAME = 'dsh-ihaveadhd'
+const SECTION_NAME = 'dsh-i-have-adhd'
 // Convention: -100 harness identity, 0 persona, 100–199 tool guidance.
 // Output-style shaping belongs after the persona, before tool guidance.
 const SECTION_ORDER = 50
 
 function stateDir() {
   const home = process.env.DSH_HOME || join(homedir(), '.dsh')
-  return join(home, 'dsh-ihaveadhd')
+  return join(home, 'dsh-i-have-adhd')
 }
 
 function flagPath() {
@@ -55,7 +55,7 @@ function writeFlag(on) {
       rmSync(flagPath(), { force: true })
     }
   } catch (error) {
-    console.error(`[dsh-ihaveadhd] flag persistence failed: ${error?.message ?? error}`)
+    console.error(`[dsh-i-have-adhd] flag persistence failed: ${error?.message ?? error}`)
   }
 }
 
@@ -75,11 +75,11 @@ export function apply(ctx) {
       enabled = true
       since = new Date().toISOString()
       if (persist) writeFlag(true)
-      console.log('[dsh-ihaveadhd] output mode ON')
+      console.log('[dsh-i-have-adhd] output mode ON')
     } catch (error) {
       // A same-name section already registered (double mount in one process)
       // degrades loudly instead of breaking composition.
-      console.error(`[dsh-ihaveadhd] section registration failed: ${error?.message ?? error}`)
+      console.error(`[dsh-i-have-adhd] section registration failed: ${error?.message ?? error}`)
     }
   }
 
@@ -91,7 +91,7 @@ export function apply(ctx) {
     enabled = false
     since = null
     if (persist) writeFlag(false)
-    console.log('[dsh-ihaveadhd] output mode OFF')
+    console.log('[dsh-i-have-adhd] output mode OFF')
   }
 
   // Restore the persisted mode at boot.
@@ -112,7 +112,7 @@ export function apply(ctx) {
     try {
       ctx.tools.register(tool)
     } catch (error) {
-      console.error(`[dsh-ihaveadhd] ${tool.name} registration skipped: ${error?.message ?? error}`)
+      console.error(`[dsh-i-have-adhd] ${tool.name} registration skipped: ${error?.message ?? error}`)
     }
   }
 
