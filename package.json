@@ -1,6 +1,6 @@
 {
   "name": "dsh-i-have-adhd",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "ADHD-friendly output shaping for DeepSeek Harness: one system-prompt section with on/off/status tools, persisted across restarts",
   "type": "module",
   "license": "MIT",
