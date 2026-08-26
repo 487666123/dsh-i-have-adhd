@@ -2,9 +2,6 @@
 
 ## 1.0.0 (2026-08-26)
 
-- Renamed from dsh-i-have-adhd before any dependent users existed; the
-  earlier name published a deprecated 1.0.1 pointing here.
-
 Initial release.
 
 - One system-prompt section (`dsh-i-have-adhd`, order 50) carrying a from-scratch ADHD-friendly output ruleset (Shape / State / Tone, ten ideas plus harness-aware overrides).
