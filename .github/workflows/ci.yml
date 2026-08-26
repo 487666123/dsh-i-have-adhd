@@ -39,8 +39,8 @@ jobs:
             const fs = require('fs');
             const text = fs.readFileSync('cordis.patch.yml', 'utf8');
             if (!/- insert:/.test(text)) throw new Error('missing insert block');
-            if (!/id:\s*dsh-i-have-adhd/.test(text)) throw new Error('missing plugin row id');
-            if (!/name:\s*dsh-i-have-adhd/.test(text)) throw new Error('missing package name row');
+            if (!/id:\s*dsh-ihaveadhd/.test(text)) throw new Error('missing plugin row id');
+            if (!/name:\s*dsh-ihaveadhd/.test(text)) throw new Error('missing package name row');
             console.log('patch ok');
           "
 

@@ -1,6 +1,6 @@
 // The ruleset injected into the system prompt when ADHD mode is on.
 //
-// Written from scratch for dsh-i-have-adhd. The ten underlying ideas are
+// Written from scratch for dsh-ihaveadhd. The ten underlying ideas are
 // common knowledge in ADHD-friendly communication (and predate any single
 // implementation); the wording, organization and examples here are original.
 // Inspired by ayghri/i-have-adhd (MIT) — see THIRD-PARTY-NOTICES.md.
