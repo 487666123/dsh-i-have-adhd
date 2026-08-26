@@ -1,0 +1,40 @@
+{
+  "name": "dsh-i-have-adhd",
+  "version": "1.0.0",
+  "description": "ADHD-friendly output shaping for DeepSeek Harness: one system-prompt section with on/off/status tools, persisted across restarts",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "dsh",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "THIRD-PARTY-NOTICES.md"
+  ],
+  "exports": {
+    ".": "./dsh/index.js",
+    "./rules": "./dsh/rules.js",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "adhd",
+    "output-style",
+    "accessibility",
+    "productivity",
+    "dsh-plugin"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/yongshuai0314/dsh-i-have-adhd.git"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
