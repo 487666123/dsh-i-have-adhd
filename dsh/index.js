@@ -100,7 +100,7 @@ export function apply(ctx) {
   function status() {
     return {
       enabled,
-      since,
+      since: since ?? '',
       persisted: readFlag(),
       section: SECTION_NAME,
     }
@@ -121,7 +121,21 @@ export function apply(ctx) {
     description:
       'Turn ON ADHD-friendly output shaping for this DSH session and persist it across restarts. Call when the user asks for "adhd mode", "adhd mode on", or wants action-first, numbered-step replies without preamble or closers. Returns the mode status.',
     parameters: { type: 'object', properties: {} },
-    output: { schema: { type: 'json' }, render: renderJson },
+    output: {
+      schema: {
+        type: 'object',
+        properties: {
+          ok: { type: 'boolean' },
+          enabled: { type: 'boolean' },
+          since: { type: 'string' },
+          persisted: { type: 'boolean' },
+          section: { type: 'string' },
+        },
+        required: ['enabled', 'since', 'persisted', 'section'],
+        additionalProperties: true,
+      },
+      render: renderJson,
+    },
     async execute() {
       enable(true)
       return { ok: true, ...status() }
@@ -133,7 +147,21 @@ export function apply(ctx) {
     description:
       'Turn OFF ADHD-friendly output shaping and clear the persisted flag. Call when the user says "adhd mode off", "normal mode", or wants the default reply style back.',
     parameters: { type: 'object', properties: {} },
-    output: { schema: { type: 'json' }, render: renderJson },
+    output: {
+      schema: {
+        type: 'object',
+        properties: {
+          ok: { type: 'boolean' },
+          enabled: { type: 'boolean' },
+          since: { type: 'string' },
+          persisted: { type: 'boolean' },
+          section: { type: 'string' },
+        },
+        required: ['enabled', 'since', 'persisted', 'section'],
+        additionalProperties: true,
+      },
+      render: renderJson,
+    },
     async execute() {
       disable(true)
       return { ok: true, ...status() }
@@ -145,7 +173,21 @@ export function apply(ctx) {
     description:
       'Report whether ADHD-friendly output shaping is on, since when, and whether the flag file will restore it after a restart.',
     parameters: { type: 'object', properties: {} },
-    output: { schema: { type: 'json' }, render: renderJson },
+    output: {
+      schema: {
+        type: 'object',
+        properties: {
+          ok: { type: 'boolean' },
+          enabled: { type: 'boolean' },
+          since: { type: 'string' },
+          persisted: { type: 'boolean' },
+          section: { type: 'string' },
+        },
+        required: ['enabled', 'since', 'persisted', 'section'],
+        additionalProperties: true,
+      },
+      render: renderJson,
+    },
     async execute() {
       return status()
     },
